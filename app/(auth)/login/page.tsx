@@ -20,6 +20,7 @@ export default function LoginPage() {
       localStorage.setItem("token", "demo-token");
       window.location.href = "/dashboard";
     } catch (err: any) {
+      console.log(err);
       setError("Invalid credentials. Please try again.");
     } finally {
       setLoading(false);
@@ -33,7 +34,12 @@ export default function LoginPage() {
         <div className="mb-6 text-center">
           <div className="mx-auto mb-2 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
             {/* simple cross/plus mark for a medical logo vibe */}
-            <svg width="18" height="18" viewBox="0 0 24 24" className="fill-current">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              className="fill-current"
+            >
               <path d="M10 4h4v6h6v4h-6v6h-4v-6H4v-4h6z" />
             </svg>
           </div>
@@ -44,7 +50,10 @@ export default function LoginPage() {
         {/* Form */}
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
-            <label htmlFor="email" className="mb-1 block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="mb-1 block text-sm font-medium text-gray-700"
+            >
               Email address
             </label>
             <input
@@ -54,14 +63,19 @@ export default function LoginPage() {
               className="input"
               placeholder="you@example.com"
               value={form.email}
-              onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+              onChange={(e) =>
+                setForm((f) => ({ ...f, email: e.target.value }))
+              }
               autoComplete="email"
             />
           </div>
 
           <div>
             <div className="mb-1 flex items-center justify-between">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <button
@@ -80,12 +94,19 @@ export default function LoginPage() {
                 className="input pr-10"
                 placeholder="••••••••"
                 value={form.password}
-                onChange={(e) => setForm((f) => ({ ...f, password: e.target.value }))}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, password: e.target.value }))
+                }
                 autoComplete="current-password"
               />
               {/* lock icon */}
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
-                <svg width="18" height="18" viewBox="0 0 24 24" className="fill-current">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  className="fill-current"
+                >
                   <path d="M12 2a5 5 0 00-5 5v3H6a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2v-8a2 2 0 00-2-2h-1V7a5 5 0 00-5-5zm-3 8V7a3 3 0 016 0v3H9z" />
                 </svg>
               </div>
@@ -97,7 +118,9 @@ export default function LoginPage() {
               <input
                 type="checkbox"
                 checked={form.remember}
-                onChange={(e) => setForm((f) => ({ ...f, remember: e.target.checked }))}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, remember: e.target.checked }))
+                }
                 className="h-4 w-4 accent-primary"
               />
               Remember me
@@ -113,7 +136,11 @@ export default function LoginPage() {
             </div>
           )}
 
-          <button type="submit" disabled={loading} className="btn btn-primary w-full">
+          <button
+            type="submit"
+            disabled={loading}
+            className="btn btn-primary w-full"
+          >
             {loading ? "Signing in…" : "Sign in"}
           </button>
         </form>
@@ -140,7 +167,8 @@ export default function LoginPage() {
           and{" "}
           <a className="text-primary hover:underline" href="#">
             Privacy Policy
-          </a>.
+          </a>
+          .
         </p>
       </div>
     </main>
